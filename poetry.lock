@@ -24,7 +24,7 @@ typing-extensions = ">=3.6.5"
 yarl = ">=1.0,<2.0"
 
 [package.extras]
-speedups = ["aiodns", "brotlipy", "cchardet"]
+speedups = ["cchardet", "brotlipy", "aiodns"]
 
 [[package]]
 name = "appdirs"
@@ -67,10 +67,10 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [package.extras]
-dev = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "furo", "sphinx", "pre-commit"]
-docs = ["furo", "sphinx", "zope.interface"]
-tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
-tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six"]
+tests_no_zope = ["six", "pytest (>=4.3.0)", "pympler", "hypothesis", "coverage[toml] (>=5.0.2)"]
+tests = ["zope.interface", "six", "pytest (>=4.3.0)", "pympler", "hypothesis", "coverage[toml] (>=5.0.2)"]
+docs = ["zope.interface", "sphinx", "furo"]
+dev = ["pre-commit", "sphinx", "furo", "zope.interface", "six", "pytest (>=4.3.0)", "pympler", "hypothesis", "coverage[toml] (>=5.0.2)"]
 
 [[package]]
 name = "black"
@@ -92,8 +92,8 @@ typed-ast = ">=1.4.0"
 typing-extensions = ">=3.7.4"
 
 [package.extras]
+d = ["aiohttp-cors", "aiohttp (>=3.3.2)"]
 colorama = ["colorama (>=0.4.3)"]
-d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
 
 [[package]]
 name = "certifi"
@@ -345,7 +345,7 @@ optional = false
 python-versions = ">=3.5"
 
 [package.extras]
-test = ["flake8 (>=3.8.4,<3.9.0)", "pycodestyle (>=2.6.0,<2.7.0)"]
+test = ["pycodestyle (>=2.6.0,<2.7.0)", "flake8 (>=3.8.4,<3.9.0)"]
 
 [[package]]
 name = "importlib-metadata"
@@ -360,8 +360,8 @@ typing-extensions = {version = ">=3.6.4", markers = "python_version < \"3.8\""}
 zipp = ">=0.5"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
-testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "pytest-enabler", "packaging", "pep517", "pyfakefs", "flufl.flake8", "pytest-black (>=0.3.7)", "pytest-mypy", "importlib-resources (>=1.3)"]
+testing = ["importlib-resources (>=1.3)", "pytest-mypy", "pytest-black (>=0.3.7)", "flufl.flake8", "pyfakefs", "pep517", "packaging", "pytest-enabler", "pytest-cov", "pytest-flake8", "pytest-checkdocs (>=1.2.3)", "pytest (>=3.5,!=3.7.3)"]
+docs = ["rst.linker (>=1.9)", "jaraco.packaging (>=8.2)", "sphinx"]
 
 [[package]]
 name = "incremental"
@@ -372,7 +372,7 @@ optional = false
 python-versions = "*"
 
 [package.extras]
-scripts = ["click (>=6.0)", "twisted (>=16.4.0)"]
+scripts = ["twisted (>=16.4.0)", "click (>=6.0)"]
 
 [[package]]
 name = "iniconfig"
@@ -435,8 +435,8 @@ typed-ast = {version = ">=1.4.0,<1.5.0", markers = "python_version < \"3.8\""}
 typing-extensions = ">=3.7.4"
 
 [package.extras]
-dmypy = ["psutil (>=4.0)"]
 python2 = ["typed-ast (>=1.4.0,<1.5.0)"]
+dmypy = ["psutil (>=4.0)"]
 
 [[package]]
 name = "mypy-extensions"
@@ -488,7 +488,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
 
 [package.extras]
-dev = ["pre-commit", "tox"]
+dev = ["tox", "pre-commit"]
 
 [[package]]
 name = "prompt-toolkit"
@@ -572,7 +572,7 @@ py = ">=1.8.2"
 toml = "*"
 
 [package.extras]
-testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
+testing = ["xmlschema", "requests", "nose", "mock", "hypothesis (>=3.56)", "argcomplete"]
 
 [[package]]
 name = "pytest-cov"
@@ -588,7 +588,7 @@ pytest = ">=4.6"
 toml = "*"
 
 [package.extras]
-testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtualenv"]
+testing = ["virtualenv", "pytest-xdist", "six", "process-tests", "hunter", "fields"]
 
 [[package]]
 name = "pytest-sanic"
@@ -637,8 +637,8 @@ idna = ">=2.5,<3"
 urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
-security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)"]
-socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
+socks = ["win-inet-pton", "PySocks (>=1.5.6,!=1.5.7)"]
+security = ["cryptography (>=1.3.4)", "pyOpenSSL (>=0.14)"]
 
 [[package]]
 name = "rfc3986"
@@ -669,10 +669,10 @@ uvloop = {version = ">=0.5.3", markers = "sys_platform != \"win32\" and implemen
 websockets = ">=7.0,<9.0"
 
 [package.extras]
-all = ["pytest (==5.2.1)", "multidict (>=4.0,<5.0)", "gunicorn", "pytest-cov", "httpcore (==0.3.0)", "beautifulsoup4", "pytest-sanic", "pytest-sugar", "pytest-benchmark", "aiofiles", "tox", "black", "flake8", "bandit", "towncrier", "sphinx (>=2.1.2)", "sphinx-rtd-theme", "recommonmark (>=0.5.0)", "docutils", "pygments", "uvloop (>=0.5.3)", "ujson (>=1.35)"]
-dev = ["pytest (==5.2.1)", "multidict (>=4.0,<5.0)", "gunicorn", "pytest-cov", "httpcore (==0.3.0)", "beautifulsoup4", "pytest-sanic", "pytest-sugar", "pytest-benchmark", "aiofiles", "tox", "black", "flake8", "bandit", "towncrier", "uvloop (>=0.5.3)", "ujson (>=1.35)"]
-docs = ["sphinx (>=2.1.2)", "sphinx-rtd-theme", "recommonmark (>=0.5.0)", "docutils", "pygments"]
-test = ["pytest (==5.2.1)", "multidict (>=4.0,<5.0)", "gunicorn", "pytest-cov", "httpcore (==0.3.0)", "beautifulsoup4", "pytest-sanic", "pytest-sugar", "pytest-benchmark", "uvloop (>=0.5.3)", "ujson (>=1.35)"]
+test = ["ujson (>=1.35)", "uvloop (>=0.5.3)", "pytest-benchmark", "pytest-sugar", "pytest-sanic", "beautifulsoup4", "httpcore (==0.3.0)", "pytest-cov", "gunicorn", "multidict (>=4.0,<5.0)", "pytest (==5.2.1)"]
+docs = ["pygments", "docutils", "recommonmark (>=0.5.0)", "sphinx-rtd-theme", "sphinx (>=2.1.2)"]
+dev = ["ujson (>=1.35)", "uvloop (>=0.5.3)", "towncrier", "bandit", "flake8", "black", "tox", "aiofiles", "pytest-benchmark", "pytest-sugar", "pytest-sanic", "beautifulsoup4", "httpcore (==0.3.0)", "pytest-cov", "gunicorn", "multidict (>=4.0,<5.0)", "pytest (==5.2.1)"]
+all = ["ujson (>=1.35)", "uvloop (>=0.5.3)", "pygments", "docutils", "recommonmark (>=0.5.0)", "sphinx-rtd-theme", "sphinx (>=2.1.2)", "towncrier", "bandit", "flake8", "black", "tox", "aiofiles", "pytest-benchmark", "pytest-sugar", "pytest-sanic", "beautifulsoup4", "httpcore (==0.3.0)", "pytest-cov", "gunicorn", "multidict (>=4.0,<5.0)", "pytest (==5.2.1)"]
 
 [[package]]
 name = "sanic-cors"
@@ -760,11 +760,11 @@ python-versions = "*"
 
 [[package]]
 name = "typing-extensions"
-version = "3.10.0.0"
-description = "Backported and Experimental Type Hints for Python 3.5+"
+version = "4.1.1"
+description = "Backported and Experimental Type Hints for Python 3.6+"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.6"
 
 [[package]]
 name = "ujson"
@@ -783,9 +783,9 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
 
 [package.extras]
-secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
-socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 brotli = ["brotlipy (>=0.6.0)"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+secure = ["ipaddress", "certifi", "idna (>=2.0.0)", "cryptography (>=1.3.4)", "pyOpenSSL (>=0.14)"]
 
 [[package]]
 name = "uvloop"
@@ -833,13 +833,13 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
-testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "pytest-enabler", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
+testing = ["pytest-mypy", "pytest-black (>=0.3.7)", "func-timeout", "jaraco.itertools", "pytest-enabler", "pytest-cov", "pytest-flake8", "pytest-checkdocs (>=1.2.3)", "pytest (>=4.6)"]
+docs = ["rst.linker (>=1.9)", "jaraco.packaging (>=8.2)", "sphinx"]
 
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6,<3.9"
-content-hash = "1c3facae40cf29cd98510223f09b4ed5a0e3607b56052ff8530e0f45ff8488e9"
+content-hash = "39f761e4e7e17369bc0cad9385090dd8c4d03b17cb187297aae6228baca93eab"
 
 [metadata.files]
 aiofiles = [
@@ -1372,9 +1372,8 @@ typed-ast = [
     {file = "typed_ast-1.4.2.tar.gz", hash = "sha256:9fc0b3cb5d1720e7141d103cf4819aea239f7d136acf9ee4a69b047b7986175a"},
 ]
 typing-extensions = [
-    {file = "typing_extensions-3.10.0.0-py2-none-any.whl", hash = "sha256:0ac0f89795dd19de6b97debb0c6af1c70987fd80a2d62d1958f7e56fcc31b497"},
-    {file = "typing_extensions-3.10.0.0-py3-none-any.whl", hash = "sha256:779383f6086d90c99ae41cf0ff39aac8a7937a9283ce0a414e5dd782f4c94a84"},
-    {file = "typing_extensions-3.10.0.0.tar.gz", hash = "sha256:50b6f157849174217d0656f99dc82fe932884fb250826c18350e159ec6cdf342"},
+    {file = "typing_extensions-4.1.1-py3-none-any.whl", hash = "sha256:21c85e0fe4b9a155d0799430b0ad741cdce7e359660ccbd8b530613e8df88ce2"},
+    {file = "typing_extensions-4.1.1.tar.gz", hash = "sha256:1a9462dcc3347a79b1f1c0271fbe79e844580bb598bafa1ed208b94da3cdcd42"},
 ]
 ujson = [
     {file = "ujson-4.0.2-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:e390df0dcc7897ffb98e17eae1f4c442c39c91814c298ad84d935a3c5c7a32fa"},
